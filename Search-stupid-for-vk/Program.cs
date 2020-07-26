@@ -6,7 +6,9 @@ namespace Search_stupid_for_vk
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Fan project");
+            Console.WriteLine("Hello, I find stupid people on VK");
+            Console.WriteLine("Enter the link to the VK page");
+            string vkPage = Console.ReadLine();
         }
     }
 }
