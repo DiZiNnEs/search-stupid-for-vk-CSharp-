@@ -13,9 +13,10 @@ namespace Search_stupid_for_vk
             this.url = url;
         }
 
-        public string Test()
+        public string Greeting()
         {
-            return url;
+            return $"I got a link: {url}\n" +
+                   $"Searching for an asshole";
         }
     }
 }
