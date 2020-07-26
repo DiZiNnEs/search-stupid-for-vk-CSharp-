@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Search_stupid_for_vk
 {
@@ -9,6 +10,9 @@ namespace Search_stupid_for_vk
             Console.WriteLine("Hello, I find stupid people on VK");
             Console.WriteLine("Enter the link to the VK page");
             string vkPage = Console.ReadLine();
+
+            TheFirstWayToFindDumb<string> c = new TheFirstWayToFindDumb<string>(vkPage);
+            Console.WriteLine(c.GetHtml());
         }
     }
 }
