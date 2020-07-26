@@ -6,4 +6,8 @@
         <RootNamespace>Search_stupid_for_vk</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="AngleSharp.Css" Version="0.14.2" />
+    </ItemGroup>
+
 </Project>
