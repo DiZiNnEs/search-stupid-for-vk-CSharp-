@@ -29,23 +29,11 @@ namespace Search_stupid_for_vk
 
         public string[] GetHtml()
         {
-            // Using asynchrony 
-            // HttpClient httpClient = new HttpClient();
-            // string url = await httpClient.GetStringAsync(this.url);
-            // IConfiguration config = Configuration.Default;
-            // IBrowsingContext context = BrowsingContext.New(config);
-            // IDocument document = await context.OpenAsync(request => request.Content(url));
-            //
-            // var got = document.Links;
-            // foreach (var VARIABLE in got)
-            // {
-            //     Console.WriteLine(VARIABLE.TextContent);
-            // }
-            //
             HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse) request.GetResponse();
             Stream receiveStream = response.GetResponseStream();
             StreamReader readStream = null;
+
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 if (String.IsNullOrWhiteSpace(response.CharacterSet))
@@ -54,8 +42,17 @@ namespace Search_stupid_for_vk
                     readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
             }
 
+            try
+            {
+                StreamWriter textFile = new StreamWriter("parsingResult.txt");
+                textFile.Write(readStream.ReadToEnd());
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                throw new DirectoryNotFoundException("Directory not found!");
+            }
+
             return new[] {readStream.ReadToEnd()};
-            // return readStream.ReadToEnd();
         }
 
         public void ComputingTheIdiot()
@@ -64,15 +61,17 @@ namespace Search_stupid_for_vk
 
             foreach (var blackWord in GetHtml())
             {
-                if (blackListOfWords.Contains(blackWord))
+                if (blackListOfWords.Contains("div"))
                 {
-                    Console.WriteLine("I'm found!");
+                    Console.WriteLine("I'm found!" + blackWord);
                 }
                 else
                 {
                     Console.WriteLine("I didn't find black word)");
                 }
             }
+
+            Console.WriteLine(Array.Exists(GetHtml(), element => element == "div"));
         }
     }
 }
