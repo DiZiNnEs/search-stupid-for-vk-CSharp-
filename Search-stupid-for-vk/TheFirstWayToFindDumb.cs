@@ -1,7 +1,9 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
+
 // using System.Net.Http;
 // using System.Threading.Channels;
 // using System.Threading.Tasks;
@@ -25,7 +27,7 @@ namespace Search_stupid_for_vk
                    $"Searching for an asshole";
         }
 
-        public string GetHtml()
+        public string[] GetHtml()
         {
             // Using asynchrony 
             // HttpClient httpClient = new HttpClient();
@@ -52,7 +54,25 @@ namespace Search_stupid_for_vk
                     readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
             }
 
-            return readStream.ReadToEnd();
+            return new[] {readStream.ReadToEnd()};
+            // return readStream.ReadToEnd();
+        }
+
+        public void ComputingTheIdiot()
+        {
+            string[] blackListOfWords = {"Kuat", "Electron"};
+
+            foreach (var blackWord in GetHtml())
+            {
+                if (blackListOfWords.Contains(blackWord))
+                {
+                    Console.WriteLine("I'm found!");
+                }
+                else
+                {
+                    Console.WriteLine("I didn't find black word)");
+                }
+            }
         }
     }
 }
