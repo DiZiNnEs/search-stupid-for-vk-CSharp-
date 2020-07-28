@@ -2,7 +2,9 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 // using System.Net.Http;
 // using System.Threading.Channels;
@@ -27,51 +29,28 @@ namespace Search_stupid_for_vk
                    $"Searching for an asshole";
         }
 
-        public string[] GetHtml()
+        public async Task GetHtml()
         {
-            HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
-            HttpWebResponse response = (HttpWebResponse) request.GetResponse();
-            Stream receiveStream = response.GetResponseStream();
-            StreamReader readStream = null;
-
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                if (String.IsNullOrWhiteSpace(response.CharacterSet))
-                    readStream = new StreamReader(receiveStream);
-                else
-                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
-            }
-
+            using var httpClient = new HttpClient();
+            var content = await httpClient.GetStringAsync(url);
+            
             try
             {
                 StreamWriter textFile = new StreamWriter("parsingResult.txt");
-                textFile.Write(readStream.ReadToEnd());
+                textFile.Write(content);
             }
             catch (DirectoryNotFoundException ex)
             {
                 throw new DirectoryNotFoundException("Directory not found!");
             }
-
-            return new[] {readStream.ReadToEnd()};
-        }
-
-        public void ComputingTheIdiot()
-        {
-            string[] blackListOfWords = {"Kuat", "Electron"};
-
-            foreach (var blackWord in GetHtml())
+            // Catch another exception
+            catch (Exception ex)
             {
-                if (blackListOfWords.Contains("div"))
-                {
-                    Console.WriteLine("I'm found!" + blackWord);
-                }
-                else
-                {
-                    Console.WriteLine("I didn't find black word)");
-                }
+                throw new Exception();
             }
-
-            Console.WriteLine(Array.Exists(GetHtml(), element => element == "div"));
         }
+
+        // Сделать метод для записи результата парсинга в текстовый файл
+        // Сделать метод для прочтение этого файла
     }
 }

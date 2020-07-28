@@ -5,14 +5,15 @@ namespace Search_stupid_for_vk
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Hello, I find stupid people on VK");
             Console.WriteLine("Enter the link to the VK page");
             string vkPage = Console.ReadLine();
 
             TheFirstWayToFindDumb<string> c = new TheFirstWayToFindDumb<string>(vkPage);
-            Console.WriteLine(c.GetHtml());
+            Console.WriteLine(c.Greeting());
+            await c.GetHtml();
         }
     }
 }
