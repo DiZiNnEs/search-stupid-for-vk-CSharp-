@@ -29,11 +29,12 @@ namespace Search_stupid_for_vk
                    $"Searching for an asshole";
         }
 
-        public async Task GetHtml()
+        public async Task<string> GetHtml(string url)
         {
-            using var httpClient = new HttpClient();
-            var content = await httpClient.GetStringAsync(url);
-            
+            using HttpClient httpClient = new HttpClient();
+            string content = await httpClient.GetStringAsync(url);
+            Console.WriteLine(123);
+            Console.WriteLine(123);
             try
             {
                 StreamWriter textFile = new StreamWriter("parsingResult.txt");
@@ -48,7 +49,28 @@ namespace Search_stupid_for_vk
             {
                 throw new Exception();
             }
+            
+            return content;
         }
+
+        // public async void WritingToTextFile()
+        // {
+        //     try
+        //     {
+        //         Console.WriteLine("I will write");
+        //         StreamWriter textFile = new StreamWriter("parsingResult.txt");
+        //         textFile.Write(await GetHtml(url));
+        //     }
+        //     catch (DirectoryNotFoundException ex)
+        //     {
+        //         throw new DirectoryNotFoundException("Directory not found!");
+        //     }
+        //     // Catch another exception
+        //     catch (Exception ex)
+        //     {
+        //         throw new Exception();
+        //     }
+        // }
 
         // Сделать метод для записи результата парсинга в текстовый файл
         // Сделать метод для прочтение этого файла
