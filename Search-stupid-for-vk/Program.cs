@@ -13,8 +13,7 @@ namespace Search_stupid_for_vk
 
             TheFirstWayToFindDumb<string> c = new TheFirstWayToFindDumb<string>(vkPage);
             await c.GetHtml(vkPage);
-            // c.WritingToTextFile();
-            // c.WritingToTextFile();
+            c.WritingToTextFile();
         }
     }
 }

@@ -53,24 +53,24 @@ namespace Search_stupid_for_vk
             return content;
         }
 
-        // public async void WritingToTextFile()
-        // {
-        //     try
-        //     {
-        //         Console.WriteLine("I will write");
-        //         StreamWriter textFile = new StreamWriter("parsingResult.txt");
-        //         textFile.Write(await GetHtml(url));
-        //     }
-        //     catch (DirectoryNotFoundException ex)
-        //     {
-        //         throw new DirectoryNotFoundException("Directory not found!");
-        //     }
-        //     // Catch another exception
-        //     catch (Exception ex)
-        //     {
-        //         throw new Exception();
-        //     }
-        // }
+        public async void WritingToTextFile()
+        {
+            try
+            {
+                Console.WriteLine("I will write");
+                StreamWriter textFile = new StreamWriter("parsingResult.txt");
+                textFile.Write(await GetHtml(url));
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                throw new DirectoryNotFoundException("Directory not found!");
+            }
+            // Catch another exception
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
 
         // Сделать метод для записи результата парсинга в текстовый файл
         // Сделать метод для прочтение этого файла
