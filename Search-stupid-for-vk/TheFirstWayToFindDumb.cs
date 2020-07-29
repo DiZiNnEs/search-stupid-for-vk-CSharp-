@@ -33,12 +33,10 @@ namespace Search_stupid_for_vk
         {
             using HttpClient httpClient = new HttpClient();
             string content = await httpClient.GetStringAsync(url);
-            Console.WriteLine(123);
-            Console.WriteLine(123);
             try
             {
-                StreamWriter textFile = new StreamWriter("parsingResult.txt");
-                textFile.Write(content);
+                // StreamWriter textFile = new StreamWriter("parsingResult.txt");
+                // textFile.Write(content);
             }
             catch (DirectoryNotFoundException ex)
             {
@@ -53,15 +51,12 @@ namespace Search_stupid_for_vk
             return content;
         }
 
-        public async void WritingToTextFile()
+        public void WritingToTextFile()
         {
             try
             {
-                Console.WriteLine("I will write");
                 StreamWriter textFile = new StreamWriter("parsingResult.txt");
-                textFile.WriteAsync(await GetHtml(url));
-                textFile.Write("qweqweweqweqweqwe");
-                Console.WriteLine("I wrote");
+                textFile.WriteLine(GetHtml(url));
                 textFile.Close();
             }
             catch (DirectoryNotFoundException ex)
