@@ -51,12 +51,12 @@ namespace Search_stupid_for_vk
             return content;
         }
 
-        public void WritingToTextFile()
+        public async void WritingToTextFile()
         {
             try
             {
                 StreamWriter textFile = new StreamWriter("parsingResult.txt");
-                textFile.WriteLine(GetHtml(url));
+                textFile.WriteLine(await GetHtml(url));
                 textFile.Close();
             }
             catch (DirectoryNotFoundException ex)
@@ -69,7 +69,25 @@ namespace Search_stupid_for_vk
                 throw new Exception();
             }
         }
-
+        // It's works
+         public async void WritingToTextFileTest(string text)
+                {
+                    try
+                    {
+                        StreamWriter textFile = new StreamWriter("parsingResult.txt");
+                        textFile.WriteLine(text);
+                        textFile.Close();
+                    }
+                    catch (DirectoryNotFoundException ex)
+                    {
+                        throw new DirectoryNotFoundException("Directory not found!");
+                    }
+                    // Catch another exception
+                    catch (Exception ex)
+                    {
+                        throw new Exception();
+                    }
+                }
         // public void Write(string someText)
         // {
         //     try
