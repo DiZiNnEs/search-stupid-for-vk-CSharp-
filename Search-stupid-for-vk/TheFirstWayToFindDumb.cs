@@ -51,12 +51,12 @@ namespace Search_stupid_for_vk
             return content;
         }
 
-        public async void WritingToTextFile()
+        public async void WritingToTextFile(string textContent)
         {
             try
             {
                 StreamWriter textFile = new StreamWriter("parsingResult.txt");
-                textFile.WriteLine(await GetHtml(url));
+                textFile.WriteLine(textContent);
                 textFile.Close();
             }
             catch (DirectoryNotFoundException ex)
@@ -70,40 +70,6 @@ namespace Search_stupid_for_vk
             }
         }
         // It's works
-         public async void WritingToTextFileTest(string text)
-                {
-                    try
-                    {
-                        StreamWriter textFile = new StreamWriter("parsingResult.txt");
-                        textFile.WriteLine(text);
-                        textFile.Close();
-                    }
-                    catch (DirectoryNotFoundException ex)
-                    {
-                        throw new DirectoryNotFoundException("Directory not found!");
-                    }
-                    // Catch another exception
-                    catch (Exception ex)
-                    {
-                        throw new Exception();
-                    }
-                }
-        // public void Write(string someText)
-        // {
-        //     try
-        //     {
-        //         StreamWriter textFile = new StreamWriter("parsingResult.txt");
-        //         textFile.Write("Hell world");
-        //         
-        //         textFile.WriteLine(someText);
-        //         textFile.Close();
-        //     }
-        //     catch (Exception e)
-        //     {
-        //         Console.WriteLine(e);
-        //         throw;
-        //     }
-        // }
         // Сделать метод для записи результата парсинга в текстовый файл
         // Сделать метод для прочтение этого файла
     }
