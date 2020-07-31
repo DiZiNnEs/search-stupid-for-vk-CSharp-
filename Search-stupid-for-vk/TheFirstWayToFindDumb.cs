@@ -6,11 +6,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-// using System.Net.Http;
-// using System.Threading.Channels;
-// using System.Threading.Tasks;
-// using AngleSharp;
-// using AngleSharp.Dom;
 
 namespace Search_stupid_for_vk
 {
@@ -69,8 +64,6 @@ namespace Search_stupid_for_vk
                 throw new Exception();
             }
         }
-        // It's works
-        // Сделать метод для записи результата парсинга в текстовый файл
         // Сделать метод для прочтение этого файла
     }
 }
