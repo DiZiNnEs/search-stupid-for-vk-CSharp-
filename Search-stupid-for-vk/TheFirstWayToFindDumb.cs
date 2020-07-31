@@ -6,11 +6,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-// using System.Net.Http;
-// using System.Threading.Channels;
-// using System.Threading.Tasks;
-// using AngleSharp;
-// using AngleSharp.Dom;
 
 namespace Search_stupid_for_vk
 {
@@ -42,6 +37,29 @@ namespace Search_stupid_for_vk
             }
             catch (DirectoryNotFoundException ex)
             {
+                Console.WriteLine(ex);
+                throw new DirectoryNotFoundException("Directory not found!");
+            }
+            // Catch another exception
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new Exception();
+            }
+
+            return content;
+        }
+
+        public async void WritingToTextFile(string textContent)
+        {
+            try
+            {
+                Console.WriteLine("I will write");
+                StreamWriter textFile = new StreamWriter(textContent);
+                textFile.Write(await GetHtml(url));
+            }
+            catch (DirectoryNotFoundException ex)
+            {
                 throw new DirectoryNotFoundException("Directory not found!");
             }
             // Catch another exception
@@ -49,30 +67,8 @@ namespace Search_stupid_for_vk
             {
                 throw new Exception();
             }
-            
-            return content;
         }
 
-        // public async void WritingToTextFile()
-        // {
-        //     try
-        //     {
-        //         Console.WriteLine("I will write");
-        //         StreamWriter textFile = new StreamWriter("parsingResult.txt");
-        //         textFile.Write(await GetHtml(url));
-        //     }
-        //     catch (DirectoryNotFoundException ex)
-        //     {
-        //         throw new DirectoryNotFoundException("Directory not found!");
-        //     }
-        //     // Catch another exception
-        //     catch (Exception ex)
-        //     {
-        //         throw new Exception();
-        //     }
-        // }
-
-        // Сделать метод для записи результата парсинга в текстовый файл
         // Сделать метод для прочтение этого файла
     }
 }
