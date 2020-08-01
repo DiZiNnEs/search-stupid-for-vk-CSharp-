@@ -65,5 +65,15 @@ namespace Search_stupid_for_vk
             }
         }
         // Сделать метод для прочтение этого файла
+
+        public void ReadToTextFile()
+        {
+            string[] wordForFindDumb = {"Kuat", "Electron"};
+
+            string[] lines = File.ReadAllLines("parsingResult.txt");
+            foreach (string line in lines)
+                Console.WriteLine(line);
+            Console.WriteLine("FIND THE WORD");
+        }
     }
 }
