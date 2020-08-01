@@ -69,25 +69,23 @@ namespace Search_stupid_for_vk
 
         public void ReadToTextFile()
         {
-            string[] wordForFindDumb = {"Kuat", "Electron"};
+            string[] wordForFindDumb = {"Kuat", "Electron", "Sex18"};
 
             // string[] lines = File.ReadAllLines("parsingResult.txt");
             // foreach (string line in lines)
             //     Console.WriteLine(line);
             // Console.WriteLine("FIND THE WORD");
-            Console.Write("Keyword: ");
-            var keyword = Console.ReadLine() ?? "";
-            using (var sr = new StreamReader("parsingResult.txt")) {
-                while (!sr.EndOfStream) {
-                    var line = sr.ReadLine();
-                    if (String.IsNullOrEmpty(line)) continue;
-                    if (line.IndexOf(keyword, StringComparison.CurrentCultureIgnoreCase) >= 0) {
-                        Console.WriteLine(line);
-                    }
-                }
-            }
-
-            Console.ReadLine();
+            // Console.Write("Keyword: ");
+            // var keyword = Console.ReadLine() ?? "";
+            // using (var sr = new StreamReader("parsingResult.txt")) {
+            //     while (!sr.EndOfStream) {
+            //         var line = sr.ReadLine();
+            //         if (String.IsNullOrEmpty(line)) continue;
+            //         if (line.IndexOf(keyword, StringComparison.CurrentCultureIgnoreCase) >= 0) {
+            //             Console.WriteLine(line);
+            //         }
+            //     }
+            // }
             //We read all the lines from the file
 //             IEnumerable<string> lines = File.ReadAllLines("parsingResult.txt");
 //
@@ -106,10 +104,9 @@ namespace Search_stupid_for_vk
 //                 ? String.Format("Matches:\n> {0}", String.Join("\n> ", matches))
 //                 : "There were no matches");
 
-
-            Console.ReadLine();
-            foreach (var input  in wordForFindDumb)
+            foreach (var input in wordForFindDumb)
             {
+                Console.WriteLine($"Found the word: {input}");
                 //We read all the lines from the file
                 IEnumerable<string> lines = File.ReadAllLines("parsingResult.txt");
 

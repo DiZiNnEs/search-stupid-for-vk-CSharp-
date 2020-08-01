@@ -14,6 +14,7 @@ namespace Search_stupid_for_vk
             TheFirstWayToFindDumb<string> c = new TheFirstWayToFindDumb<string>(vkPage);
             // Console.WriteLine(c.GetHtml(vkPage));
             // c.WritingToTextFile(await c.GetHtml(vkPage));
+            c.WritingToTextFile(await c.GetHtml(vkPage));
             c.ReadToTextFile();
         }
     }
