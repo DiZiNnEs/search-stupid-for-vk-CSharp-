@@ -84,6 +84,7 @@ namespace Search_stupid_for_vk
             }
         }
 
+
         public void RunEverything()
         {
             Console.WriteLine(Greeting());
