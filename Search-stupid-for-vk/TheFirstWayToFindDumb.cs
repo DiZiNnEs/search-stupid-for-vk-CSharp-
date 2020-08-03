@@ -47,7 +47,7 @@ namespace Search_stupid_for_vk
             return content;
         }
 
-        public async void WritingToTextFile(string textContent)
+        public void WritingToTextFile(string textContent)
         {
             try
             {
@@ -74,7 +74,7 @@ namespace Search_stupid_for_vk
                 Console.WriteLine($"Found the word: {input}");
                 IEnumerable<string> lines = File.ReadAllLines("parsingResult.txt");
 
-                Console.Write("Enter the word to search: ");
+                Console.Write($"Enter the word {input} to search: ");
 
                 IEnumerable<string> matches = !String.IsNullOrEmpty(input)
                     ? lines.Where(line => line.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0)
@@ -84,6 +84,12 @@ namespace Search_stupid_for_vk
                     ? String.Format("Matches:\n> {0}", String.Join("\n> ", matches))
                     : "There were no matches");
             }
+        }
+
+        public void RunEverything()
+        {
+            Console.WriteLine(Greeting());
+            ReadToTextFile();
         }
     }
 }
