@@ -1,9 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 
@@ -28,8 +27,6 @@ namespace Search_stupid_for_vk
         {
             using HttpClient httpClient = new HttpClient();
             string content = await httpClient.GetStringAsync(url);
-            Console.WriteLine(123);
-            Console.WriteLine(123);
             try
             {
                 StreamWriter textFile = new StreamWriter("parsingResult.txt");
@@ -37,26 +34,24 @@ namespace Search_stupid_for_vk
             }
             catch (DirectoryNotFoundException ex)
             {
-                Console.WriteLine(ex);
                 throw new DirectoryNotFoundException("Directory not found!");
             }
             // Catch another exception
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 throw new Exception();
             }
 
             return content;
         }
 
-        public async void WritingToTextFile(string textContent)
+        public void WritingToTextFile(string textContent)
         {
             try
             {
-                Console.WriteLine("I will write");
-                StreamWriter textFile = new StreamWriter(textContent);
-                textFile.Write(await GetHtml(url));
+                StreamWriter textFile = new StreamWriter("parsingResult.txt");
+                textFile.WriteLine(textContent);
+                textFile.Close();
             }
             catch (DirectoryNotFoundException ex)
             {
@@ -69,6 +64,30 @@ namespace Search_stupid_for_vk
             }
         }
 
-        // Сделать метод для прочтение этого файла
+        public void ReadToTextFile()
+        {
+            string[] wordForFindDumb = {"Kuat", "Electron", "Sex18"};
+            foreach (var input in wordForFindDumb)
+            {
+                Console.WriteLine($"Found the word: {input}");
+                IEnumerable<string> lines = File.ReadAllLines("parsingResult.txt");
+
+                Console.Write($"Enter the word {input} to search: ");
+
+                IEnumerable<string> matches = !String.IsNullOrEmpty(input)
+                    ? lines.Where(line => line.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0)
+                    : Enumerable.Empty<string>();
+
+                Console.WriteLine(matches.Any()
+                    ? String.Format("Matches:\n> {0}", String.Join("\n> ", matches))
+                    : "There were no matches");
+            }
+        }
+
+        public void RunEverything()
+        {
+            Console.WriteLine(Greeting());
+            ReadToTextFile();
+        }
     }
 }
