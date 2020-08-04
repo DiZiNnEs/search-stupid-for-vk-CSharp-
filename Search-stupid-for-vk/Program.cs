@@ -15,11 +15,11 @@ namespace Search_stupid_for_vk
             c.RunEverything();
 
             CheckingPageAvailablity.ToCheckifThePageIsAvailable();
-            if (CheckingPageAvailablity.ToCheckifThePageIsAvailable())
+            if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == false)
             {
                 Console.WriteLine("page is private");
             }
-            else if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == false)
+            else if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == true)
             {
                 Console.WriteLine("page isn't private ");
             }

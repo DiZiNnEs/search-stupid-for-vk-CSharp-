@@ -66,7 +66,7 @@ namespace Search_stupid_for_vk
 
         public void ReadToTextFile()
         {
-            string[] wordForFindDumb = {"Kuat", "Electron", "Sex18"};
+            string[] wordForFindDumb = {"Kuat", "Electron", "Sex18", "Кымбат"};
             foreach (var input in wordForFindDumb)
             {
                 Console.WriteLine($"Found the word: {input}");
