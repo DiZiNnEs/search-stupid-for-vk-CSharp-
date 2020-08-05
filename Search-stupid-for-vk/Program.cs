@@ -12,23 +12,16 @@ namespace Search_stupid_for_vk
             string vkPage = Console.ReadLine();
             TheFirstWayToFindDumb<string> c = new TheFirstWayToFindDumb<string>(vkPage);
             c.WritingToTextFile(await c.GetHtml(vkPage));
-            c.RunEverything();
 
             CheckingPageAvailablity.ToCheckifThePageIsAvailable();
-            if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == false)
+            if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == true)
             {
-                Console.WriteLine("page is private");
+                Console.WriteLine("VK page is private");
             }
-            else if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == true)
+            else if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == false)
             {
-                Console.WriteLine("page isn't private ");
+               c.RunEverything();
             }
-            else
-            {
-                Console.WriteLine("Fuck you, I don't know what's going on");
-            }
-
-            Console.WriteLine(CheckingPageAvailablity.ToCheckifThePageIsAvailable());
         }
     }
 }
