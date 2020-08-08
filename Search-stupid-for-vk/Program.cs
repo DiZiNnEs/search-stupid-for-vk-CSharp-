@@ -10,18 +10,21 @@ namespace Search_stupid_for_vk
             Console.WriteLine("Hello, I find stupid people on VK");
             Console.WriteLine("Enter the link to the VK page");
             string vkPage = Console.ReadLine();
-            TheFirstWayToFindDumb<string> c = new TheFirstWayToFindDumb<string>(vkPage);
-            c.WritingToTextFile(await c.GetHtml(vkPage));
-
-            CheckingPageAvailablity.ToCheckifThePageIsAvailable();
-            if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == true)
-            {
-                Console.WriteLine("VK page is private");
-            }
-            else if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == false)
-            {
-               c.RunEverything();
-            }
+            // TheFirstWayToFindDumb<string> c = new TheFirstWayToFindDumb<string>(vkPage);
+            // c.WritingToTextFile(await c.GetHtml(vkPage));
+            //
+            // CheckingPageAvailablity.ToCheckifThePageIsAvailable();
+            // if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == true)
+            // {
+            //     Console.WriteLine("VK page is private");
+            // }
+            // else if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == false)
+            // {
+            //    c.RunEverything();
+            // }
+            
+            TheSecondWayToFindDumb<string> c = new TheSecondWayToFindDumb<string>(vkPage);
+            c.cssDemo();
         }
     }
 }
