@@ -23,8 +23,10 @@ namespace Search_stupid_for_vk
             //    c.RunEverything();
             // }
             
-            TheSecondWayToFindDumb<string> c = new TheSecondWayToFindDumb<string>(vkPage);
+            TheSecondWayToFindDumb<string> c = new TheSecondWayToFindDumb<string>("https://vk.com/dizinnes");
             c.cssDemo();
+
+            c.GetHtml(c.cssDemo("https://vk.com/dizinnes"));
         }
     }
 }
