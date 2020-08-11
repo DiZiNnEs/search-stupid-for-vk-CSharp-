@@ -10,24 +10,23 @@ namespace Search_stupid_for_vk
             Console.WriteLine("Hello, I find stupid people on VK");
             Console.WriteLine("Enter the link to the VK page");
             string vkPage = Console.ReadLine();
-            // TheFirstWayToFindDumb<string> c = new TheFirstWayToFindDumb<string>(vkPage);
-            // c.WritingToTextFile(await c.GetHtml(vkPage));
-            //
-            // CheckingPageAvailablity.ToCheckifThePageIsAvailable();
-            // if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == true)
-            // {
-            //     Console.WriteLine("VK page is private");
-            // }
-            // else if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == false)
-            // {
-            //    c.RunEverything();
-            // }
+            TheFirstWayToFindDumb<string> c = new TheFirstWayToFindDumb<string>(vkPage);
+            c.WritingToTextFile(await c.GetHtml(vkPage), "parsingResult.txt");
             
-            TheSecondWayToFindDumb<string> c = new TheSecondWayToFindDumb<string>("https://vk.com/dizinnes");
-            // c.cssDemo();
-
-            Console.WriteLine(c.cssDemo());
-
+            CheckingPageAvailablity.ToCheckifThePageIsAvailable();
+            if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == true)
+            {
+                Console.WriteLine("VK page is private");
+            }
+            else if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == false)
+            {
+               c.RunEverything();
+            }
+            
+            // TheSecondWayToFindDumb<string> c2 = new TheSecondWayToFindDumb<string>("https://vk.com/dizinnes");
+            // // c.cssDemo();
+            //
+            // Console.WriteLine(c2.GetPageFromSesleniumTest());
         }
     }
 }

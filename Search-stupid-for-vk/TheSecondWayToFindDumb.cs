@@ -23,49 +23,25 @@ namespace Search_stupid_for_vk
         {
             this.url = url;
         }
-
-        [Test]
-        public async Task<string>  cssDemo()
+        public string GetPageFromSesleniumTest()
         {
             m_driver = new FirefoxDriver(Environment.CurrentDirectory);
             m_driver.Url = url;
             m_driver.Manage().Window.Minimize();
-            var test = m_driver.FindElement(By.CssSelector(""));
-            var test3 = test.GetAttribute("innerHTML");
-            // var link = m_driver.FindElement(By.XPath("//span[contains(text)), \"Following\")]"));
-            var link = m_driver.FindElement(By.CssSelector("span.header_label.fl_l:nth-child(1)"));
-            var test2 = link.GetAttribute("innerHTML");
-            link.Click();
-            foreach (var VARIABLE in test3)
+            try
             {
-                Console.WriteLine(VARIABLE);
+                var link = m_driver.FindElement(By.CssSelector("span.header_label.fl_l:nth-child(1)"));
+                return m_driver.PageSource;
             }
-            // using HttpClient httpClient = new HttpClient();
-            // string content = await httpClient.GetStringAsync(link);
-            return test3; 
-            // m_driver.Close();
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            finally
+            {
+                m_driver.Close();
+            }
         }
-        
-        // public async Task<string> GetHtml()
-        // {
-        //     using HttpClient httpClient = new HttpClient();
-        //     string content = await httpClient.GetStringAsync(cssDemo());
-        //     try
-        //     {
-        //         StreamWriter textFile = new StreamWriter("parsingResultFromSeleniumBrowser.txt");
-        //         textFile.Write(content);
-        //     }
-        //     catch (DirectoryNotFoundException ex)
-        //     {
-        //         throw new DirectoryNotFoundException("Directory not found!");
-        //     }
-        //     // Catch another exception
-        //     catch (Exception ex)
-        //     {
-        //         throw new Exception();
-        //     }
-        //
-        //     return content;
-        // }
     }
 }

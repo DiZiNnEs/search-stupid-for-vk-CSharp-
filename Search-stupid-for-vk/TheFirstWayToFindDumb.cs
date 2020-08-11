@@ -45,11 +45,11 @@ namespace Search_stupid_for_vk
             return content;
         }
 
-        public void WritingToTextFile(string textContent)
+        public void WritingToTextFile(string textContent, string path)
         {
             try
             {
-                StreamWriter textFile = new StreamWriter("parsingResult.txt");
+                StreamWriter textFile = new StreamWriter(path);
                 textFile.WriteLine(textContent);
                 textFile.Close();
             }
