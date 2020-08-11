@@ -23,6 +23,7 @@ namespace Search_stupid_for_vk
         {
             this.url = url;
         }
+
         public string GetPageFromSesleniumTest()
         {
             m_driver = new FirefoxDriver(Environment.CurrentDirectory);

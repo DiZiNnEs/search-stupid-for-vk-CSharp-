@@ -25,10 +25,6 @@ namespace Search_stupid_for_vk
                 c.RunEverything();
                 c2.RunEverythingForSecondWay();
             }
-
-            // // c.cssDemo();
-            //
-            // Console.WriteLine(c2.GetPageFromSesleniumTest());
         }
     }
 }

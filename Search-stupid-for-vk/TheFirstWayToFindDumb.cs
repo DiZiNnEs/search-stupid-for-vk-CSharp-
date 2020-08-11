@@ -66,7 +66,7 @@ namespace Search_stupid_for_vk
 
         public void ReadToTextFile(string path)
         {
-            string[] wordForFindDumb = {"Kuat", "Electron", "Sex18", "Кымбат"};
+            string[] wordForFindDumb = {"Kuat", "Electron", "Sex18", "Кымбат"}; // This is your blackword array or file
             foreach (var input in wordForFindDumb)
             {
                 Console.WriteLine($"Found the word: {input}");
