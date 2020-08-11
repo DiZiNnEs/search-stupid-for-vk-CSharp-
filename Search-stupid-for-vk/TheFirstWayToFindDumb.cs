@@ -64,13 +64,13 @@ namespace Search_stupid_for_vk
             }
         }
 
-        public void ReadToTextFile()
+        public void ReadToTextFile(string path)
         {
             string[] wordForFindDumb = {"Kuat", "Electron", "Sex18", "Кымбат"};
             foreach (var input in wordForFindDumb)
             {
                 Console.WriteLine($"Found the word: {input}");
-                IEnumerable<string> lines = File.ReadAllLines("parsingResult.txt");
+                IEnumerable<string> lines = File.ReadAllLines(path);
 
                 Console.Write($"Enter the word {input} to search: ");
 
@@ -88,7 +88,7 @@ namespace Search_stupid_for_vk
         public void RunEverything()
         {
             Console.WriteLine(Greeting());
-            ReadToTextFile();
+            ReadToTextFile("parsingResult.txt");
         }
     }
 }

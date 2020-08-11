@@ -43,5 +43,12 @@ namespace Search_stupid_for_vk
                 m_driver.Close();
             }
         }
+
+        public void RunEverythingForSecondWay()
+        {
+            TheFirstWayToFindDumb<string> call = new TheFirstWayToFindDumb<string>(url);
+            call.WritingToTextFile(GetPageFromSesleniumTest(), "parsingResultFromSelenium.txt");
+            call.ReadToTextFile("parsingResultFromSelenium.txt");
+        }
     }
 }

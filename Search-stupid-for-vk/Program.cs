@@ -11,8 +11,10 @@ namespace Search_stupid_for_vk
             Console.WriteLine("Enter the link to the VK page");
             string vkPage = Console.ReadLine();
             TheFirstWayToFindDumb<string> c = new TheFirstWayToFindDumb<string>(vkPage);
+
+            TheSecondWayToFindDumb<string> c2 = new TheSecondWayToFindDumb<string>("https://vk.com/dizinnes");
             c.WritingToTextFile(await c.GetHtml(vkPage), "parsingResult.txt");
-            
+
             CheckingPageAvailablity.ToCheckifThePageIsAvailable();
             if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == true)
             {
@@ -20,10 +22,10 @@ namespace Search_stupid_for_vk
             }
             else if (CheckingPageAvailablity.ToCheckifThePageIsAvailable() == false)
             {
-               c.RunEverything();
+                c.RunEverything();
+                c2.RunEverythingForSecondWay();
             }
-            
-            // TheSecondWayToFindDumb<string> c2 = new TheSecondWayToFindDumb<string>("https://vk.com/dizinnes");
+
             // // c.cssDemo();
             //
             // Console.WriteLine(c2.GetPageFromSesleniumTest());
